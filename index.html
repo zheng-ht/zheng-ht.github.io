@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HAOTIAN ZHENG | HOME</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+
+    #section06 { background: url(https://picsum.photos/1200/800?image=901) center center / cover no-repeat;}
+
+    /* Optional: Add some CSS styling to your navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0c1421;
+      padding: 10px;
+      color: white;
+    }
+
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0c1421;
+    }
+
+    li.navitem {
+      float: right;
+    }
+
+    li.navitem a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li.navitem a:hover {
+      background-color: gray;
+    }
+
+    h1 {
+      font-size: 110px;
+        color: white;
+      text-align: center;
+    }
+
+    #intro {
+      text-align: center;
+      color: white;
+      font-size: 43px;
+    }
+    
+    body {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    color: white;
+    background: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+  }
+
+    a {
+      color: #a51417; /* Change the color of the URLs */
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to make it darker */
+    }
+
+    .audio-button {
+      position: relative;
+      background-color: #5e6269;
+      border: 2px solid white;
+      outline: black;
+      font-size: 25px;
+      color: #FFFFFF;
+      padding: 10px;
+      width: 120px;
+      text-align: center;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;  
+     }
+      
+     .audio-button:after {
+      content: "";
+      background: #5e6269;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px!important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s 
+     }
+
+     .audio-button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s 
+     }
+
+     .hidden {
+          opacity: 0;
+          transition: opacity 0.5s;
+        }
+        .reveal {
+          opacity: 1;
+        }
+        
+        section {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: auto;
+          }
+  
+          .scroll-down {
+  opacity: 1;
+  -webkit-transition: all .5s ease-in 3s;
+  transition: all .5s ease-in 3s;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -16px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #FFF;
+  background-size: 14px auto;
+  border-radius: 50%;
+  z-index: 2;
+  -webkit-animation: bounce 2s infinite 2s;
+  animation: bounce 2s infinite 2s;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+}
+
+.scroll-down:before {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 6px);
+    transform: rotate(-45deg);
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    border: 2px solid white;
+    border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  60% {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+  </style>
+<script>
+  $(function() {
+    $('.scroll-down').click (function() {
+      $('html, body').animate({scrollTop: $('section.ok').offset().top }, 'slow');
+      return false;
+    });
+  });
+</script>
+<script>
+  function hideLink() {
+  var link = document.getElementById("myLink");
+  link.style.display = "none";
+}
+</script>
+</head>
+<header>
+    
+      <h2>ZHENG HAO-TIAN</h2>
+    </div>
+<body>
+  <nav>
+    <ul class="navbar">
+        <li class="navitem"><a href="contact.html">CONTACT</a></li>
+      <li class="navitem"><a href="teaching.html">TEACHING</a></li>
+      <li class="navitem"><a href="ZHENG_CV.pdf" target="_blank">CV</a></li>
+      <li class="navitem"><a href="research.html">RESEARCH</a></li>
+      <li class="navitem"><a href="index.html">HOME</a></li>
+    </ul>
+  </nav>
+</header>
+<h1>HAOTIAN ZHENG</h1>
+  <!-- Content for the HOME page -->
+  <p id="intro">... is a PhD student in social work at the <font color="#a51417"><a href="https://brownschool.wustl.edu/Pages/default.aspx">Brown School</a></font color>
+    of Washington University in St. Louis. He studies <em><b>Financial Capability</b></em> and <em><b>Asset-building</b></em> among low-income population.
+  </p>
+
+</br></br>
+
+<section>
+  <a id="myLink" href="#hiddenContent" class="scroll-down" address="true" onclick="hideLink()"></a>
+</section>
+  
+</br></br>
+  <div id="hiddenContent" class="hidden" style="text-align: center;">
+<p id="intro">Give it a shot to pronounce his first name: haʊ tjen <button class="audio-button" onclick="playAudio()">Click me</button></p>
+<img src="top-portrait-Zheng,Haotian.jpg" alt="Hidden Image" style="width: 400px;">
+  </div>
+  <script>
+    function scrollToSection(sectionId) {
+      const section = document.querySelector(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    </script>
+
+  <audio id="myAudio">
+    <source src="Haotian_pronounce.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function playAudio() {
+      var audio = document.getElementById("myAudio");
+      audio.play();
+    }
+  </script>
+<footer>&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Brown School@WashU</footer>
+
+<script>
+  // JavaScript to reveal elements on scroll
+  window.addEventListener("scroll", revealElements);
+
+function revealElements() {
+  var elements = document.querySelectorAll(".hidden");
+
+  for (var i = 0; i < elements.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = elements[i].getBoundingClientRect().top;
+
+    if (elementTop < windowHeight) {
+      elements[i].classList.add("reveal");
+    } else {
+      elements[i].classList.remove("reveal");
+    }
+  }
+}
+</script>
+</body>
+</html>
