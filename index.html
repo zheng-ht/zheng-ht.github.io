@@ -6,7 +6,26 @@
     <title>ZHENG HAO-TIAN | 郑 皓天</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         header {
+      .news-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px; /* Adjust based on your design */
+        }
+        .news-item {
+            position: absolute;
+            width: 100%;
+            transition: opacity 0.5s, top 0.5s; /* Smooth transition */
+        }
+        .news-item.active {
+            opacity: 1;
+            transition: opacity 0.5s, top 0.5s;
+        }
+        .news-item.leaving {
+            opacity: 0;
+            top: -100%;
+        }
+
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -213,7 +232,7 @@
 
     <section id="landing">
         <h1 style="font-size: 8vw; position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-bottom: 20px; margin-top: -50px;">HAOTIAN ZHENG </h1>
-        <p id="intro" style="font-size: 3vw;position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; width: 77%; margin-top: 0;margin-bottom: -2vw;">... is a PhD student in social work at the Brown School
+        <p id="intro" style="font-size: 3vw;position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; width: 77%; margin-top: 0;margin-bottom: -2vw;">... is a PhD candidate in social work at the Brown School
           of Washington University in St. Louis. He researches social policies aimed at improving <em><b>Financial and Social Well-being</b></em> through <em><b>Financial Capability</b></em> and <em><b>Asset-building</b></em>, focusing on low-income populations.
         </p>
         <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
@@ -253,7 +272,7 @@
         </div>
         <div style="float: left; width: 50%;">
           <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
-            Hello! I'm a social science researcher and a PhD student in social work at the <font color="#a51417"><a href="https://brownschool.washu.edu/">Brown School</a></font color> of Washington University in St. Louis. I study interventions and policies ranging from Children's Savings Account and Child Development Account to guaranteed income and Child Tax Credit. My work employs various quantitative methods, both experimental and observational, to understand whether and how policies are effective in improving financial and social well-being. 
+            Hello! I'm an applied social science researcher and a PhD student in social work at the <font color="#a51417"><a href="https://brownschool.washu.edu/">Brown School</a></font color> of Washington University in St. Louis. I study interventions and policies ranging from Children's Savings Account and Child Development Account to guaranteed income and Child Tax Credit. My work employs various quantitative methods, both experimental and observational, to understand whether and how policies are effective in improving financial and social well-being. 
           </p>
           <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
             My research has appeared or is forthcoming in the Journal of Consumer Affairs, Journal of Family and Economic Issues, Journal of Social Policy, The Russell Sage Foundation Journal of the Social Sciences, and Journal of the Society for Social Work and Research. I  have been part of multi-year research grants funded by the Ford Foundation, JPMorgan Chase Foundation, MasterCard Foundation, and other major funders in the field.
@@ -262,19 +281,61 @@
       </div>
     </section>
     
-
     <section id="research">
       <div style="display: table; width: 100%; clear: both;">
         <div style="float: left; width: 37%">
           <h1 style = "font-size: 4vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">ACTIVITIES</h1>
-          <ul style = "font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
-            <li>[PINNED] I am on the job market for this upcoming cycle (2024-2025).</li>
-            <li>[2024-07] COVID-19 job loss and early retirement withdrawal study is accepted to the JCA.</li>
-            <li>[2024-06] Black Reparations study is published and discussed by <a href="https://www.rsfjournal.org/content/10/3">The RSF JSS</a>; Featured by <a href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations">NPR</a>. </li>
-            <li>[2024-06] Child Tax Credit expansion study is accepted to the <a href="https://www.journals.uchicago.edu/doi/10.1086/731836">JSSWR</a>. </li>
-            <li>[2024-01] Presented historical harm and wealth ownership at 2024 SSWR. </li>
-          </ul>
+          <div style = "font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;"> <strong>[PINNED] I am on the job market for this upcoming cycle (2024-2025). </strong></div>
+          <div class="news-container">
+            <div class="news-item" style = "margin-right:7vw; font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-07] COVID-19 job loss and early retirement withdrawal study is accepted to and published online by the <a href="https://doi.org/10.1111/joca.12598">JCA</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Black Reparations study is published and discussed by <a href="https://www.rsfjournal.org/content/10/3">The RSF JSS</a>; Featured by <a href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations">NPR</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Child Tax Credit expansion study is accepted to the <a href="https://www.journals.uchicago.edu/doi/10.1086/731836">JSSWR</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-01] Presented historical harm and wealth ownership at 2024 SSWR.</div>
+            <!-- Add more news items as needed -->
         </div>
+        </div>
+        <script>
+          const newsItems = Array.from(document.querySelectorAll('.news-item'));
+          const itemsToShow = 3;
+          let currentIndex = 0;
+  
+          function updateNewsDisplay() {
+              newsItems.forEach((item, index) => {
+                  item.classList.remove('active', 'leaving');
+                  item.style.top = '';
+              });
+  
+              let totalHeight = 0;
+              for (let i = 0; i < itemsToShow; i++) {
+                  const index = (currentIndex + i) % newsItems.length;
+                  const item = newsItems[index];
+                  item.classList.add('active');
+                  item.style.top = `${totalHeight}px`;
+                  totalHeight += item.getBoundingClientRect().height;
+              }
+  
+              // Set the height of the container to the total height of the visible items
+              document.querySelector('.news-container').style.height = `${totalHeight}px`;
+  
+              // Ensure that all items are properly hidden or displayed
+              newsItems.forEach((item, index) => {
+                  const isVisible = (index >= currentIndex && index < currentIndex + itemsToShow) || (index < currentIndex && index + newsItems.length < currentIndex + itemsToShow);
+                  if (isVisible) {
+                      item.classList.remove('leaving');
+                  } else {
+                      item.classList.add('leaving');
+                  }
+              });
+          }
+  
+          updateNewsDisplay();
+          setInterval(() => {
+              currentIndex = (currentIndex + 1) % newsItems.length;
+              updateNewsDisplay();
+          }, 5000);
+      </script>
+       
+        
         <div style="float: left; width: 63%">
           <h1 style = "font-size: 4vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">RESEARCH</h1>
           <ul style = "font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
@@ -283,11 +344,12 @@
             <li>Historical Racial Harm and Wealth Accumulation <em>(with J. Huang and M. Sherraden)</em></li>
             <li>Historical Racial Harm and Well-being <em>(with J. Huang and M. Sherraden)</em></li>
             <li>Income Volatility and Well-being <em>(with S. Conroy, S. Roll and M. Despard)</em></li>
-    </ul>
-    <p class="ongoing-research" style = "position: relative; left: 2.5vw;width:90%;font-size: 1vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
+          </ul>
+          
+        <p class="ongoing-research" style = "position: relative; left: 2.5vw;width:90%;font-size: 1vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
       I present here research projects that I am currently working on. Completed projects, manuscripts under consideration, and presentations can be found in my <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a>.
-    </p>    
-      </div>
+         </p>    
+        </div>
       </div>
       </section>
 
