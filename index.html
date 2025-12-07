@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZHENG HAO-TIAN | 郑 皓天</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      .news-container {
+            position: relative;
+            overflow: hidden;
+            height: 300px; /* Adjust based on your design */
+        }
+        .news-item {
+            position: absolute;
+            width: 100%;
+            transition: opacity 0.5s, top 0.5s; /* Smooth transition */
+        }
+        .news-item.active {
+            opacity: 1;
+            transition: opacity 0.5s, top 0.5s;
+        }
+        .news-item.leaving {
+            opacity: 0;
+            top: -100%;
+        }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0c1421;
+      padding: 0.8vw 1vw;
+      color: white;
+    }
+
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0c1421;
+    }
+
+    li.navitem {
+      float: right;
+    }
+
+    li.navitem a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 0.8vw 1vw;
+      text-decoration: none;
+    }
+
+    li.navitem a:hover {
+      background-color: #111;
+    }
+
+    h1 {
+      font-size: 110px;
+        color: white;
+      text-align: center;
+    }
+
+    .aligned-heading {
+      font-size: 40px;
+      color: white;
+      text-align: left;
+      margin-left: 60px;
+    }
+    
+    .course-taught {
+      font-size: 22px;
+      color: white;
+      margin-left: 40px;
+    }
+
+    .std-feedback {
+      font-size: 20px;
+      color: white;
+      margin-right: 20px; /* Adjust the margin value as needed */
+      margin-left: 6ex; /* Adjust the indentation value as needed */
+    }
+
+    .contact {
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+
+    #intro {
+      text-align: center;
+      color: white;
+      font-size: 43px;
+    }
+    
+body {
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    color: white;
+    background: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+  }
+
+    p {
+      margin: 0;
+      line-height: 1.5; /* Adjust the line spacing value */
+    }
+
+    a {
+      color: #990000; /* Change the color of the URLs */
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to make it darker */
+    }
+
+.indexintro {
+      background: rgba(12, 20, 33, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: clamp(16px, 2.4vw, 28px);
+      margin: 0 auto 1.25rem;
+      width: min(100%, 980px);
+      backdrop-filter: saturate(120%) blur(3px);
+    }
+    .index_head {
+      display: flex; gap: .75rem; align-items: center; margin-bottom: .3rem;
+    }
+    .index_icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: grid; place-items: center; background: rgba(255,255,255,.12);
+      font-size: 20px;
+    }
+    .index_title {
+      margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.25;
+    }
+    .pill {
+      display: inline-block; margin-left: .5rem; font-size: .8rem; line-height: 1;
+      padding: .35rem .55rem; border-radius: 999px; background: rgba(255,255,255,.12);
+      color: #d3ddff;
+    }
+
+
+    a {
+      color: #990000; /* Change the color of the URLs */
+    }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #0c1421;
+          padding: 10px;
+          color: white;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            background: url('assets/bg.png') no-repeat center center / cover;
+        }
+
+        #first-section {
+            background-color: rgba(52, 152, 219, 0.7);
+        }
+
+        #second-section {
+            background-color: rgba(44, 62, 80, 0.7);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #2980b9;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .arrow-icon {
+            font-size: 24px; /* Larger icon for visibility */
+        }
+    </style>
+</head>
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 1vw; width: 100vw">
+  <h2 style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0;">
+      <a href="index.html" style="color: white;text-decoration: none;">ZHENG HAO-TIAN | 郑 皓天</a>
+  </h2>
+  <nav style="font-size: 1.85vw; padding: 0.5vw 1vw; position: fixed; top: 1vw; right: 1vw; width: auto;">
+      <ul style="display: flex; gap: 1vw; margin: 0; padding: 0; list-style-type: none;">
+        <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+          <a href="index.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">ABOUT</a>
+      </li>  
+      <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <a href="research.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">RESEARCH</a>
+    </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="teaching.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">TEACHING</a>
+          </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
+          </li>
+          
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+            <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
+        </li>
+      </ul>
+  </nav>
+</header>
+
+<body>
+
+    <section id="landing">
+        <h1 style="font-size: 8vw; position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-bottom: 20px; margin-top: -50px;">HAOTIAN ZHENG </h1>
+        <p id="intro" style="font-size: 3vw;position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; width: 77%; margin-top: 0;margin-bottom: -2vw;">... is an assistant professor at the School of Social Welfare, State University of New York at Stony Brook. He researches social policies aimed at improving <em><b>Financial and Social Well-being</b></em> through <em><b>Financial Capability</b></em> and <em><b>Asset-building</b></em>, focusing on low-income populations.
+        </p>
+        <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
+        style="border-radius: 50%; background-color: #990000; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; transition: transform 0.2s ease;"
+        onmouseover="this.style.transform='translateY(-4px)';"
+        onmouseout="this.style.transform='translateY(0)';">
+        <i class="fas fa-angle-double-down arrow-icon" style="color: white; font-size: 19.2px;"></i>
+      </button>
+    </section>
+
+    <section id="about">
+      <h1 style = "font-size: 4vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">ABOUT</h1>
+      <div style="display: table; width: 100%; clear: both;">
+        <div style="float: left; width: 50%;">
+          <img src="assets/top-portrait-Zheng,Haotian.jpg" alt="Hidden Image" style="width: 25vw; height: auto; border-radius: 50%/50%;">
+          <p id="pronounce" style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center; width: 100%; margin-top: 0;">
+            Give it a shot to pronounce my first name: haʊ tjen <button class="audio-button" onclick="playAudio()" style="font-size: 1.3vw; background-color: #990000;">Click me</button>
+        </p>
+        <script>
+          function scrollToSection(sectionId) {
+            const section = document.querySelector(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+          </script>
+      
+        <audio id="myAudio">
+          <source src="assets/Haotian_pronounce.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      
+        <script>
+          function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+          }
+        </script>
+        </div>
+        <div style="float: left; width: 50%;">
+          <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
+            Hello! I'm social policy researcher and an assistant professor at the <font color="#990000"><a href="https://socialwelfare.stonybrookmedicine.edu/" target="_blank">School of Social Welfare</a></font color>, State University of New York Stony Brook. I study interventions and policies ranging from Children's Savings Account and Child Development Account to guaranteed income and Child Tax Credit. My work employs various quantitative methods, both experimental and observational, to understand whether and how policies are effective in improving financial and social well-being. 
+          </p>
+          <br>
+          <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
+            My research has appeared or is forthcoming in the Journal of Consumer Affairs, Journal of Family and Economic Issues, Journal of Social Policy, The Russell Sage Foundation Journal of the Social Sciences, and Journal of the Society for Social Work and Research. I  have been part of multi-year research grants funded by the Ford Foundation, JPMorgan Chase Foundation, MasterCard Foundation, and other major funders in the field.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div style="display: table; width: 100%; clear: both;">
+        <div style="float: left; width: 37%">
+          <h1 style = "font-size: 4vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">ACTIVITIES</h1>
+          <!--<div style = "font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;"> <strong>[PINNED] I am delighted to be joining <font color="#990000">The State University of New York at Stony Brook</font> as an assistant professor in fall 2025. </strong></div>-->
+          <div class="news-container">
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-11] Historical harm and contemporary wealth disparities study is accepted to the <a href="https://link.springer.com/article/10.1007/s41996-025-00180-8" target="_blank">JERP</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-11] Presented In Her Hands and financial well-being at 2025 APPAM Fall Conference.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-09] Financial shocks and emergency savings policy brief <a href="https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=1972&context=csd_research" target = "_blank">released</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-04] Successfully defended my PhD dissertation.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-04] Co-authored BNPL and AFS study presented at 2025 ACCI Annual Conference.</div>
+            <!-- 
+            <div class="news-item" style = "margin-right:7vw; font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-07] COVID-19 job loss and early retirement withdrawal study is accepted to and published online by the <a href="https://doi.org/10.1111/joca.12598" target="_blank">JCA</a>; Featured by <a href="https://source.washu.edu/2024/09/covid-19-job-losses-impacted-early-withdrawal-from-retirement-accounts/?utm_source=newsletter&utm_medium=email&utm_content=COVID-19%20job%20losses%20impacted%20withdrawal%20from%20retirement%20funds&utm_campaign=Record%209-20-24" target="_blank">The Source</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Black Reparations study is published and discussed by <a href="https://www.rsfjournal.org/content/10/3" target="_blank">The RSF JSS</a>; Featured by <a href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations" target="_blank">NPR</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Child Tax Credit expansion study is accepted to the <a href="https://www.journals.uchicago.edu/doi/10.1086/731836" target="_blank">JSSWR</a>.</div>
+            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-01] Presented historical harm and wealth ownership study at 2024 SSWR.</div>
+            -->
+            <!-- Add more news items as needed -->
+        </div>
+        </div>
+        <script>
+          const newsItems = Array.from(document.querySelectorAll('.news-item'));
+          const itemsToShow = 3;
+          let currentIndex = 0;
+  
+          function updateNewsDisplay() {
+              newsItems.forEach((item, index) => {
+                  item.classList.remove('active', 'leaving');
+                  item.style.top = '';
+              });
+  
+              let totalHeight = 0;
+              for (let i = 0; i < itemsToShow; i++) {
+                  const index = (currentIndex + i) % newsItems.length;
+                  const item = newsItems[index];
+                  item.classList.add('active');
+                  item.style.top = `${totalHeight}px`;
+                  totalHeight += item.getBoundingClientRect().height;
+              }
+  
+              // Set the height of the container to the total height of the visible items
+              document.querySelector('.news-container').style.height = `${totalHeight}px`;
+  
+              // Ensure that all items are properly hidden or displayed
+              newsItems.forEach((item, index) => {
+                  const isVisible = (index >= currentIndex && index < currentIndex + itemsToShow) || (index < currentIndex && index + newsItems.length < currentIndex + itemsToShow);
+                  if (isVisible) {
+                      item.classList.remove('leaving');
+                  } else {
+                      item.classList.add('leaving');
+                  }
+              });
+          }
+  
+          updateNewsDisplay();
+          setInterval(() => {
+              currentIndex = (currentIndex + 1) % newsItems.length;
+              updateNewsDisplay();
+          }, 5000);
+      </script>
+       
+        
+        <div style="float: left; width: 63%">
+          <h1 style = "font-size: 4vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">WORKING STUDIES</h1>
+          <ul style = "font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
+            <li>Employment Characteristics, Emergency Savings, and Financial Shocks <em>(with S. Roll and M. Despard)</em></li>
+            <li>Guaranteed Income and High Cost Financial Services Use <em>(with S. Roll, L. Hamilton, G. Zhang, & L. Brugger)</em></li>
+            <li>Historical Racial Harm and Well-being <em>(with J. Huang and M. Sherraden)</em></li>
+            <li>Income Volatility and Well-being <em>(with S. Conroy, S. Roll and M. Despard)</em></li>
+          </ul>
+          
+        <p class="ongoing-research" style = "position: relative; left: 2.5vw;width:90%;font-size: 1vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
+      I present here research projects that I am currently working on. Completed projects, manuscripts under consideration, technical reports, and presentations can be found in the <a href="research.html">Research</a> page and my <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a>.
+         </p>    
+        </div>
+      </div>
+      </section>
+
+<footer style="font-size: 1.05vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+</body>
+</html>

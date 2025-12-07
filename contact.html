@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZHENG HAOTIAN | CONTACT</title>
+  <style>
+    /* Optional: Add some CSS styling to your navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0c1421;
+      padding: 0.8vw 1vw;
+      color: white;
+    }
+
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0c1421;
+    }
+
+    li.navitem {
+      float: right;
+    }
+
+    li.navitem a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li.navitem a:hover {
+      background-color: #111;
+    }
+
+    h1 {
+      font-size: 110px;
+        color: white;
+      text-align: center;
+    }
+
+    .aligned-heading {
+      font-size: 40px;
+      color: white;
+      text-align: left;
+      margin-left: 60px;
+    }
+    
+    .course-taught {
+      font-size: 22px;
+      color: white;
+      margin-left: 40px;
+    }
+
+    .std-feedback {
+      font-size: 20px;
+      color: white;
+      margin-right: 20px; /* Adjust the margin value as needed */
+      margin-left: 6ex; /* Adjust the indentation value as needed */
+    }
+
+    .contact {
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+
+    #intro {
+      text-align: center;
+      color: white;
+      font-size: 43px;
+    }
+    
+    body {
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* required for layering */
+  }
+
+  body::before {
+  content: "";
+  position: fixed;  /* stays put like background */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; /* copy body background */
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(9px);   /* adjust blur radius */
+  z-index: -1;         /* push it behind content */
+}
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    color: white;
+    background: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+  }
+
+    p {
+      margin: 0;
+      line-height: 1.5; /* Adjust the line spacing value */
+    }
+
+    a {
+      color: #990000; /* Change the color of the URLs */
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to make it darker */
+    }
+
+    button {
+      color: white;
+      font-size: 43px;
+      background-color: #5e6269;
+      }
+  </style>
+</head>
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 1vw; width: 100vw">
+  <h2 style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0;">
+    <a href="index.html" style="color: white;text-decoration: none;">ZHENG HAO-TIAN | 郑 皓天</a>
+  </h2>
+  <nav style="font-size: 1.85vw; padding: 0.5vw 1vw; position: fixed; top: 1vw; right: 1vw; width: auto;">
+      <ul style="display: flex; gap: 1vw; margin: 0; padding: 0; list-style-type: none;">
+        <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+          <a href="index.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">ABOUT</a>
+      </li>  
+      <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <a href="research.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">RESEARCH</a>
+    </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="teaching.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">TEACHING</a>
+          </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
+          </li>
+          
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+            <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
+        </li>
+      </ul>
+  </nav>
+</header>
+
+<div class="contact">
+    <p style="font-size: 2.5vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Haotian Zheng</p>
+    <p style="font-size: 2.5vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Email: <a href="mailto:haotian.zheng@stonybrook.edu">haotian.zheng@stonybrook.edu</a></p>
+    <p style="font-size: 2.5vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Stony Brook School of Social Welfare<br>
+        101 Nicolls Road, Health Sciences Center, 2-093D <br>
+        Stony Brook, NY 11794</p>
+        <br>
+  </div>
+  <div class="social-links" style="display: flex; justify-content: center;margin-top: -8.05%;">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/haotian-zheng" target="_blank">
+        <img style = "width: 4.5vw; height: auto;" src="assets/linkedin-logo-2.png" alt="LinkedIn" class="social-icon">
+    </a>
+    <!-- Google Scholar -->
+    <a href="https://scholar.google.com/citations?user=OMnFMRMAAAAJ&hl=en&oi=ao" target="_blank">
+        <img style = "width: 4.5vw; height: auto;" src="assets/google-scholar-logo-2.png" alt="Google Scholar" class="social-icon">
+    </a>
+</div>
+  <footer style="font-size: 1.05vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+</body>
+</html>

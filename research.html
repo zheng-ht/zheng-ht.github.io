@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZHENG HAOTIAN | RESEARCH</title>
+  <style>
+    /* Optional: Add some CSS styling to your navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0c1421;
+      padding: 0.8vw 1vw;
+      color: white;
+    }
+
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0c1421;
+    }
+
+    li.navitem {
+      float: right;
+    }
+
+    li.navitem a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li.navitem a:hover {
+      background-color: #111;
+    }
+
+    h1 {
+      font-size: 110px;
+        color: white;
+      text-align: center;
+    }
+
+    .aligned-heading {
+      font-size: 40px;
+      color: white;
+      text-align: left;
+      margin-left: 60px;
+    }
+    
+    .course-taught {
+      font-size: 22px;
+      color: white;
+      margin-left: 40px;
+    }
+
+    .std-feedback {
+      font-size: 20px;
+      color: white;
+      margin-right: 20px; /* Adjust the margin value as needed */
+      margin-left: 6ex; /* Adjust the indentation value as needed */
+    }
+
+    .contact {
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+
+    #intro {
+      text-align: center;
+      color: white;
+      font-size: 43px;
+    }
+    
+ body {
+    background-image: url('assets/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* required for layering */
+  }
+
+  body::before {
+  content: "";
+  position: fixed;  /* stays put like background */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; /* copy body background */
+  background-image: url('assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);   /* adjust blur radius */
+  z-index: -1;         /* push it behind content */
+}
+
+  main {
+    flex-grow: 1;
+  }
+
+  footer {
+    color: white;
+    background: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+  }
+
+    p {
+      margin: 0;
+      line-height: 1.5; /* Adjust the line spacing value */
+    }
+
+    a {
+      color: #990000; /* Change the color of the URLs */
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to make it darker */
+    }
+
+    button {
+      color: white;
+      font-size: 43px;
+      background-color: #5e6269;
+      }
+ /* ===== Additions for the Research page ===== */
+    .wrap {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+    .lede {
+      color: #f0f4ff;
+      text-align: center;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      width: min(900px, 96%);
+      margin: 0 auto 2rem;
+      opacity: .95;
+    }
+    /* Semi-opaque cards for readability over background */
+    .theme {
+      background: rgba(12, 20, 33, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: clamp(16px, 2.4vw, 28px);
+      margin: 0 auto 1.25rem;
+      width: min(100%, 980px);
+      backdrop-filter: saturate(120%) blur(3px);
+    }
+    .theme__head {
+      display: flex; gap: .75rem; align-items: center; margin-bottom: .3rem;
+    }
+    .theme__icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: grid; place-items: center; background: rgba(255,255,255,.12);
+      font-size: 20px;
+    }
+    .theme__title {
+      margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.25;
+    }
+    .pill {
+      display: inline-block; margin-left: .5rem; font-size: .8rem; line-height: 1;
+      padding: .35rem .55rem; border-radius: 999px; background: rgba(255,255,255,.12);
+      color: #d3ddff;
+    }
+    .theme__intro {
+      color: white; margin: .5rem 0 1rem; max-width: 75ch;
+    }
+
+      #research-blur {
+    background: rgba(12, 20, 33, 0.65);              /* translucent so blur shows */
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: clamp(16px, 2.4vw, 28px);
+    backdrop-filter: saturate(120%) blur(6px);
+    -webkit-backdrop-filter: saturate(120%) blur(6px);
+    width: 100%;
+    max-width: 60ch;                                  /* comfy reading width */
+    margin-left: auto;                                /* hug the right side of its column */
+  }
+
+  #research-blur p {
+    margin: 0;
+    /* neutralize old inline rules */
+    float: none !important;
+    width: auto !important;
+    color: #fff;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                 Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: justify;
+    line-height: 1.6;
+  }
+  
+    .publist { list-style: none; margin: 0; padding: 0; }
+    .publist li {
+      background: rgba(255,255,255, .06);
+      border: 1px solid rgba(255,255,255, .12);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: .75rem;
+    }
+    .pub__title { font-weight: 700; margin: 0 0 .35rem 0; color: #fff; }
+    .pub__meta { margin: 0; color: #c7d3f7; }
+    .pub__meta .author.me { font-weight: 800; color: #ffffff; }
+    .pub__links { margin-top: .5rem; }
+    .pub__links a { margin-right: .9rem; white-space: nowrap; color: #ffd087; }
+    .pub__links a:hover { text-decoration: underline; }
+
+    /* Small screens: keep it comfy */
+    @media (max-width: 640px) {
+      header { padding: 10px 12px; }
+      li.navitem a { padding: 10px 12px; }
+      #intro { font-size: 28px; }
+    }
+    /* Ensure floats don’t break layout */
+    .nav-clear { clear: both; }
+
+      .toggle-btn {
+    margin-left: auto;
+    font-size: 1rem;
+    background: #5e6269;
+    color: white;
+    border: none;
+    padding: .4rem .8rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .toggle-btn:hover {
+    background: #444a55;
+  }
+</style>
+</head>
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 1vw; width: 100vw">
+  <h2 style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0;">
+    <a href="index.html" style="color: white;text-decoration: none;">ZHENG HAO-TIAN | 郑 皓天</a>
+  </h2>
+  <nav style="font-size: 1.85vw; padding: 0.5vw 1vw; position: fixed; top: 1vw; right: 1vw; width: auto;">
+      <ul style="display: flex; gap: 1vw; margin: 0; padding: 0; list-style-type: none;">
+        <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+          <a href="index.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">ABOUT</a>
+      </li>  
+      <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <a href="research.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">RESEARCH</a>
+    </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="teaching.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">TEACHING</a>
+          </li>
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
+          </li>
+          
+          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+            <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
+        </li>
+      </ul>
+  </nav>
+</header>
+
+  <main>
+<div style="
+  display: flex; 
+  align-items: center;       /* vertical centering */
+  justify-content: center;   /* center the whole block */
+  margin: 2rem auto; 
+  width: 80%;
+  gap: 2rem;                 /* space between image and text */
+">
+
+  <!-- Left side: picture -->
+  <div style="flex: 1; text-align: center;">
+    <img src="assets/research_pic3.png" alt="Research framework" 
+         style="width: 161%; height: auto; border-radius: 1px;" />
+  </div>
+
+  <!-- Right side: paragraph -->
+  <div class = "blurred-box" style="flex: 2;width: 70%">
+    <p style="border:1px solid #ffffff; border-radius: 15px; padding: 0.45rem; float: right; width: 70%; font-size: 2vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; text-align: justify; color: white;">
+      My research as a social policy scholar is dedicated to advancing <b>financial capability</b> and promoting <b>financial well-being</b> and <b>social equity</b> through evidence-based policy.
+      I investigate how <b><font color="#990000">institutional structures</font></b> and <b><font color="#990000">policy interventions</font></b> empower individuals and families to achieve financial security.
+      This page provides an overview of my work across three interconnected themes.
+    </p>
+  </div>
+</div>
+
+
+    <div class="wrap">
+      <!-- ================= THEME 1 ================= -->
+      <section class="theme" id="theme-1" aria-labelledby="t1">
+        <div class="theme__head">
+          <h2 id="t1" style="font-size: 2.3vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+            1. Evaluating Policy Interventions for Household Financial Well-Being
+          </h2>
+        </div>
+        <p style="font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+          I examine  the impact of specific policy interventions and financial products on families' ability to withstand economic shocks, manage debt, and access mainstream financial services, thereby enhancing their overall financial security.
+        </p>
+  <div style="text-align: center; margin: 1rem 0;">
+    <button class="toggle-btn" aria-expanded="false" aria-controls="publist-1" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      Show Publications ▼
+    </button>
+  </div>
+
+    <ol id="publist-1" class="publist" aria-label="Publications in Theme 1" hidden style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+          <!-- Repeat this LI per article; newest → oldest -->
+          <li>
+            <p class="pub__title"><strong>Job loss during COVID-19 on early retirement withdrawals: A moderated-mediation analysis</strong></p>
+            <p class="pub__meta">
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Roll, S.</span>,
+              <span class="author">Despard, M.</span>
+              (2024). <em>Journal of Consumer Affairs</em>, 58(3), 715–741.
+            </p>
+            <div class="pub__links">
+              <a href="https://doi.org/10.1111/joca.12598" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+              <a style="color: #990000;" href="https://source.washu.edu/2024/09/covid-19-job-losses-impacted-early-withdrawal-from-retirement-accounts/" target="_blank" rel="noopener">Feature</a>
+              <!--<a href="/papers/gi-variability.pdf" target="_blank" rel="noopener">PDF</a>-->
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>The Child Tax Credit Expansion and Financial Well-Being: Evidence from Families’ Emergency Savings and High-Cost Financial Resource Usage</strong></p>
+            <p class="pub__meta">
+              <span class="author">Roll, S.</span>,
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Hamilton, L.</span>,
+              <span class="author">Chun, Y.</span>,
+              <span class="author">Despard, M.</span>
+              (forthcoming). <em>Journal of the Society for Social Work and Research</em>.
+            </p>
+            <div class="pub__links">
+              <a style="color: #990000;" href="https://www.journals.uchicago.edu/doi/pdf/10.1086/731836" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>Access to Employer Benefits and Financial Insecurity Among Frontline Healthcare Workers</strong></p>
+            <p class="pub__meta">
+              <span class="author">Despard, M.</span>,
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Fox-Dichter, S.</span>,
+              (2023). <em>Compensation & Benefits Review</em>, 55(4), 123–141.
+            </p>
+            <div class="pub__links">
+              <a style="color: #990000;" href="https://journals.sagepub.com/doi/full/10.1177/08863687231189408" target="_blank" rel="noopener">DOI</a>
+              <a style="color: #990000;" href="https://www.eurekalert.org/news-releases/1005993" target="_blank" rel="noopener">Feature</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>Student Loan Policies and Payments during the COVID-19 Pandemic: Closing the Gap or Widening Inequalities?</strong></p>
+            <p class="pub__meta">
+              <span class="author">Jabbari, J.</span>,
+              <span class="author">Terada, T.</span>,
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Roll, S.</span>
+              (2024). <em>Journal of Student Financial Aid</em>, 53(2), 3.
+            </p>
+            <div class="pub__links">
+              <a style="color: #990000;" href="https://eric.ed.gov/?id=EJ1447884" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>The Impact of Grocery Store Rewards Cards on Saving and Asset Accumulation in Children’s Savings Account Programs</strong></p>
+            <p class="pub__meta">
+              <span class="author">Elliott, W.</span>,
+              <span class="author">Sorensen, N.</span>,
+              <span class="author">O'Brien, M.</span>,
+              <span class="author">Chen, Z.</span>,
+              <span class="author">Starks, B.</span>,
+              <span class="author me">Zheng, H.</span>
+              (2023). <em>Journal of the Society for Social Work and Research</em>, 14(4), 757-784.
+            </p>
+            <div class="pub__links">
+              <a href="https://doi.org/10.1086/717105" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>A Cross-Sectional Examination of Educational Expectation Among Welfare Users in an Asset Building Program</strong></p>
+            <p class="pub__meta">
+              <span class="author">Chen, Z.</span>,
+              <span class="author">O'Brien, M.</span>,
+              <span class="author">Nielsen, S.</span>,
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Starks, B.</span>,
+              (2025). <em>Global Social Welfare</em>, 12(1), 1-11.
+            </p>
+            <div class="pub__links">
+              <a href="10.1007/s40609-023-00263-0 " target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+        </ol>
+      </section>
+
+      <!-- ================= THEME 2 ================= -->
+      <section class="theme" id="theme-2" aria-labelledby="t2">
+  <div class="theme__head">
+    <h2 style="font-size: 2.3vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+      2. Developing Structural Solutions for Wealth Inequality and Poverty
+    </h2>
+    <!-- Expand/Collapse Button -->
+  </div>
+
+  <p style="font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+    I investigate systemic issues contributing to wealth disparities and poverty, proposing structural reforms, policy platforms, and innovative pathways to foster economic opportunity and mobility for disadvantaged groups.
+  </p>
+
+  <div style="text-align: center; margin: 1rem 0;">
+  <button class="toggle-btn" aria-expanded="false" aria-controls="publist-2" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      Show Publications ▼
+    </button>
+  </div>
+
+    <!-- Publications (hidden by default) -->
+  <ol id="publist-2" class="publist" aria-label="Publications in Theme 2" hidden style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+    <li>
+      <p class="pub__title"><strong>Historical Harms and Racial Wealth Inequality: Evidence from Homeownership and Retirement Savings Accounts</strong></p>
+      <p class="pub__meta">
+        <span class="author me">Zheng, H.</span>,
+        <span class="author">Huang, J.</span>,
+        <span class="author">Sherraden, M.</span>
+        (2025). <em>Journal of Economics, Race, and Policy</em>.
+      </p>
+      <div class="pub__links">
+        <a href="https://doi.org/10.1007/s41996-025-00180-8" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+      </div>
+    </li>
+    
+    <li>
+      <p class="pub__title"><strong>A Policy Platform to Deliver Black Reparations: Building on Evidence from Child Development Accounts</strong></p>
+      <p class="pub__meta">
+        <span class="author">Shanks, T. R.</span>,
+        <span class="author">Huang, J.</span>,
+        <span class="author">Elliott, W.</span>,
+        <span class="author me">Zheng, H.</span>,
+        <span class="author">Clancy, M. M.</span>,
+        <span class="author">Sherraden, M.</span>
+        (2024). <em>RSF: The Russell Sage Foundation Journal of the Social Sciences</em>, 10(3), 92-111.
+      </p>
+      <div class="pub__links">
+        <a href="https://doi.org/10.7758/RSF.2024.10.3.05" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+        <a style="color: #990000;" href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations" target="_blank" rel="noopener">Feature</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="pub__title"><strong>How Did Reskilling During the COVID-19 Pandemic Relate to Entrepreneurship and Optimism? Barriers, Opportunities, and Implications for Equity</strong></p>
+      <p class="pub__meta">
+        <span class="author">Jabbari, J.</span>,
+        <span class="author me">Zheng, H.</span>,
+        <span class="author">Roll, S.</span>,
+        <span class="author">Auguste, D.</span>,
+        <span class="author">Heller, O.</span>
+        (2024). <em>Journal of Family and Economic Issues</em>, 45(2), 410-429.
+      </p>
+      <div class="pub__links">
+        <a href="https://doi.org/10.1007/s10834-023-09906-y" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="pub__title"><strong>Who Stays Poor and Who Doesn’t? An Analysis Based on Joint Assessment of Income and Assets</strong></p>
+      <p class="pub__meta">
+        <span class="author">Chen, J.-H.</span>,
+        <span class="author">Wu, C.-F.</span>,
+        <span class="author me">Zheng, H.</span>
+        (2024). <em>Journal of Social Policy</em>, 53(3), 595-616.
+      </p>
+      <div class="pub__links">
+        <a href="https://doi.org/10.1017/S0047279422000563" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+      </div>
+    </li>
+  </ol>
+</section>
+
+      <!-- ================= THEME 3 ================= -->
+      <section class="theme" id="theme-3" aria-labelledby="t3">
+        <div class="theme__head">
+          <h2 style="font-size: 2.3vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+            3. Fostering Intergenerational Economic and Educational Mobility
+          </h2>
+        </div>
+        <p style="font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 100%; text-align: justify">
+          I explore how policies and interventions, particularly asset-building programs like Children's Savings Accounts, influence educational outcomes, aspirations, and the long-term economic trajectories of children and families, emphasizing the role of financial capability in promoting intergenerational mobility.
+        </p>
+    
+    <div style="text-align: center; margin: 1rem 0;">
+    <button class="toggle-btn" aria-expanded="false" aria-controls="publist-3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+      Show Publications ▼
+    </button>
+    </div>
+        <ol id="publist-3" hidden class="publist" aria-label="Publications in Theme 3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+          <li>
+            <p class="pub__title"><strong>The Role of Children’s Savings Accounts in Promoting Savings for College Among Welfare Recipients: The Case of Harold Alfond College Challenge (HACC)</strong></p>
+            <p class="pub__meta">
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Harris, E.</span>,
+              <span class="author">Elliott, W.</span>,
+              <span class="author">O'Brien, M.</span>
+              (2023). <em>Journal of Family and Economic Issues</em>, 44(2), 285-396.
+            </p>
+            <div class="pub__links">
+              <a href="10.1007/s10834-022-09837-0 " target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>Using Children’s Savings Accounts and Early Awards to Build College Savings among Welfare Recipients: The Case of Promise Scholars</strong></p>
+            <p class="pub__meta">
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Elliott, W.</span>,
+              <span class="author">O'Brien, M.</span>
+              (2022). <em>Journal of Poverty</em>, 26(4), 297-321.
+            </p>
+            <div class="pub__links">
+              <a href="https://doi.org/10.1080/10875549.2021.1910105" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+            <li>
+            <p class="pub__title"><strong>A Step Toward Measuring Children’s College-Bound Identity in Children’s Savings Accounts Programs: The Case of Promise Scholars</strong></p>
+            <p class="pub__meta">
+              <span class="author">Elliott, W.</span>,
+              <span class="author me">Zheng, H.</span>,
+              <span class="author">Sabol, T.</span>,
+              <span class="author">O'Brien, M.</span>
+              (2021). <em>Children and Youth Services Review</em>, 121, 105791.
+            </p>
+            <div class="pub__links">
+              <a href="https://doi.org/10.1016/j.childyouth.2020.105791" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+          <li>
+            <p class="pub__title"><strong>Examining Parental Educational Expectations in One of the Oldest Children’s Savings Account Programs in the Country: The Harold Alfond College Challenge</strong></p>
+            <p class="pub__meta">
+              <span class="author">Chen, Z.</span>,
+              <span class="author">Elliott, W.</span>,
+              <span class="author">Wang, K.</span>,
+              <span class="author">Zhang, A.</span>,
+              <span class="author me">Zheng, H.</span>
+              (2020). <em>Children and Youth Services Review</em>, 108, 104582.
+            </p>
+            <div class="pub__links">
+              <a href="https://doi.org/10.1016/j.childyouth.2019.104582" target="_blank" rel="noopener" style="color: #990000;">DOI</a>
+            </div>
+          </li>
+
+        </ol>
+      </section>
+
+      <!-- Optional: CV / Scholar links -->
+      <p class="lede" style="margin-top:1.2rem;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        This page only lists peer-reviewed publications. For more information about other publications and ongoing work, see also: <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a> ·
+        <a href="https://scholar.google.com/citations?user=OMnFMRMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+      </p>
+    </div>
+  </main>
+
+  <footer style="font-size: 1.05vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+
+  <script>
+    // Tiny enhancement: current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  
+<script>
+  // Toggle logic for expand/collapse
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const publist = document.getElementById(btn.getAttribute('aria-controls'));
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      publist.hidden = expanded; // toggle hidden attribute
+      btn.textContent = expanded ? 'Show Publications ▼' : 'Hide Publications ▲';
+    });
+  });
+</script>
+
+</body>
+</html>
