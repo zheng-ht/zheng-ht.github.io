@@ -34,21 +34,18 @@
       color: white;
     }
 
-
     h1 {
       font-size: 110px;
         color: white;
       text-align: center;
     }
 
-    
-
     #intro {
       text-align: center;
       color: white;
       font-size: 43px;
     }
-    
+
 body {
     background-image: url('assets/bg.png');
     background-size: cover;
@@ -62,7 +59,6 @@ body {
     min-height: 100vh;
 
   }
-
 
   footer {
     color: white;
@@ -102,7 +98,6 @@ body {
             background: url('assets/bg.png') no-repeat center center / cover;
         }
 
-
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -137,7 +132,7 @@ body {
           <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
               <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
           </li>
-          
+
           <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
             <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
         </li>
@@ -167,12 +162,12 @@ body {
           <p id="pronounce" style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center; width: 100%; margin-top: 0;">
             Give it a shot to pronounce my first name: haʊ tjen <button class="audio-button" onclick="playAudio()" style="font-size: 1.3vw; background-color: #990000;">Click me</button>
         </p>
-      
+
         <audio id="myAudio">
           <source src="assets/Haotian_pronounce.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-      
+
         <script>
           function playAudio() {
             var audio = document.getElementById("myAudio");
@@ -216,13 +211,13 @@ body {
           const newsItems = Array.from(document.querySelectorAll('.news-item'));
           const itemsToShow = 3;
           let currentIndex = 0;
-  
+
           function updateNewsDisplay() {
               newsItems.forEach((item, index) => {
                   item.classList.remove('active', 'leaving');
                   item.style.top = '';
               });
-  
+
               let totalHeight = 0;
               for (let i = 0; i < itemsToShow; i++) {
                   const index = (currentIndex + i) % newsItems.length;
@@ -231,10 +226,10 @@ body {
                   item.style.top = `${totalHeight}px`;
                   totalHeight += item.getBoundingClientRect().height;
               }
-  
+
               // Set the height of the container to the total height of the visible items
               document.querySelector('.news-container').style.height = `${totalHeight}px`;
-  
+
               // Ensure that all items are properly hidden or displayed
               newsItems.forEach((item, index) => {
                   const isVisible = (index >= currentIndex && index < currentIndex + itemsToShow) || (index < currentIndex && index + newsItems.length < currentIndex + itemsToShow);
@@ -245,15 +240,14 @@ body {
                   }
               });
           }
-  
+
           updateNewsDisplay();
           setInterval(() => {
               currentIndex = (currentIndex + 1) % newsItems.length;
               updateNewsDisplay();
           }, 5000);
       </script>
-       
-        
+
         <div style="float: left; width: 63%">
           <h1 style = "font-size: 4vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">WORKING STUDIES</h1>
           <ul style = "font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
@@ -262,7 +256,7 @@ body {
             <li>Historical Racial Harm and Well-being <em>(with J. Huang and M. Sherraden)</em></li>
             <li>Income Volatility and Well-being <em>(with S. Conroy, S. Roll and M. Despard)</em></li>
           </ul>
-          
+
         <p class="ongoing-research" style = "position: relative; left: 2.5vw;width:90%;font-size: 1vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
       I present here research projects that I am currently working on. Completed projects, manuscripts under consideration, technical reports, and presentations can be found in the <a href="research.html">Research</a> page and my <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a>.
          </p>    
