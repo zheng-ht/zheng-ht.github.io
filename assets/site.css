@@ -15,13 +15,13 @@
   --ink-faint:   #93a1c0;   /* tertiary / captions */
   --line:        rgba(255, 255, 255, 0.10);
 
-  /* Institutional (Stony Brook) colors */
-  --accent:      #990000;   /* official institutional red RGB 153/0/0 */
-  --accent-deep: #6e0000;   /* hover / pressed */
-  /* Closest-to-official red that stays legible on dark navy (#0c1421):
-     a deep rose tint of #990000 (hue preserved, lightness raised just
-     enough for ~4.6:1 contrast). Darker than a salmon, truer to the brand. */
-  --accent-soft: #f04438;   /* RGB 240/68/56 — deep institutional-red tint */
+  /* Institutional (Stony Brook) red palette */
+  --accent:      #990000;   /* PRIMARY red RGB 153/0/0 — filled surfaces (buttons, pills, rules) */
+  --accent-deep: #6b000d;   /* SECONDARY dark red RGB 107/0/13 — hover / pressed */
+  /* SECONDARY bright red RGB 213/32/39 — the official bright brand red.
+     Used for TEXT links/accents on dark navy: it is both on-brand and the
+     only swatch with enough contrast (~4.7:1) to read as text. */
+  --accent-soft: #d52027;
   --inst-yellow: #f1ea86;   /* official institutional yellow RGB 241/234/134 */
   --gold:        var(--inst-yellow); /* legacy alias → institutional yellow */
 
@@ -188,8 +188,8 @@ a:hover { color: var(--inst-yellow); text-decoration: underline; text-underline-
 }
 .site-nav a[aria-current="page"] {
   color: #fff;
-  background: rgba(200, 51, 43, 0.22);
-  box-shadow: inset 0 0 0 1px rgba(200, 51, 43, 0.5);
+  background: rgba(153, 0, 0, 0.32);
+  box-shadow: inset 0 0 0 1px rgba(213, 32, 39, 0.55);
 }
 
 /* ---------- Shared layout helpers ---------- */
@@ -241,7 +241,7 @@ a:hover { color: var(--inst-yellow); text-decoration: underline; text-underline-
   cursor: pointer;
   transition: transform 0.18s var(--ease), background 0.2s var(--ease),
               box-shadow 0.2s var(--ease);
-  box-shadow: 0 4px 14px rgba(200, 51, 43, 0.35);
+  box-shadow: 0 4px 14px rgba(153, 0, 0, 0.4);
 }
 .btn:hover { background: var(--accent-deep); transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
