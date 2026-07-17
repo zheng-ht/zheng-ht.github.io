@@ -75,6 +75,10 @@
         width: min(320px, 70%);
         aspect-ratio: 1 / 1;
         object-fit: cover;
+        /* The source is a tall portrait; default center-crop eats the top
+           margin and pins the head to the circle's top edge. Bias the crop
+           window toward the top of the image so its natural headroom shows. */
+        object-position: center 13%;
         border-radius: 50%;
         border: 3px solid var(--line);
         box-shadow: 0 12px 32px rgba(0,0,0,0.4);
