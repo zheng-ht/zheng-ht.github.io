@@ -18,9 +18,12 @@
   /* Institutional (Stony Brook) colors */
   --accent:      #990000;   /* official institutional red RGB 153/0/0 */
   --accent-deep: #6e0000;   /* hover / pressed */
-  --accent-soft: #ff6b5e;   /* legible on dark navy for text links */
+  /* Closest-to-official red that stays legible on dark navy (#0c1421):
+     a deep rose tint of #990000 (hue preserved, lightness raised just
+     enough for ~4.6:1 contrast). Darker than a salmon, truer to the brand. */
+  --accent-soft: #f04438;   /* RGB 240/68/56 — deep institutional-red tint */
   --inst-yellow: #f1ea86;   /* official institutional yellow RGB 241/234/134 */
-  --gold:        #e7c169;   /* legacy generic highlight (unused for DOI/Feature) */
+  --gold:        var(--inst-yellow); /* legacy alias → institutional yellow */
 
   /* Type */
   --serif: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
@@ -63,30 +66,52 @@ body {
   line-height: 1.6;
 }
 
-/* Photographic backdrop (research imagery: hand placing a savings coin into
-   asset blocks) painted full-bleed behind all content. `cover` fills the
-   viewport; `center 28%` keeps the hand-and-coins graphic in frame on tall
-   screens. A gentle vertical veil — darker only behind the header/footer —
-   keeps text legible while letting the illustration show through clearly. */
+/* Photographic backdrop. A gentle vertical navy veil keeps text legible while
+   the research illustration (added by body::after below) shows through. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background-color: var(--navy);
   background-image:
     linear-gradient(180deg,
-      rgba(12, 20, 33, 0.40) 0%,
-      rgba(12, 20, 33, 0.16) 30%,
-      rgba(12, 20, 33, 0.20) 62%,
-      rgba(12, 20, 33, 0.44) 100%),
-    url("bg.png");
-  background-size: cover;
-  background-position: center 20%;
+      rgba(12, 20, 33, 0.44) 0%,
+      rgba(12, 20, 33, 0.30) 40%,
+      rgba(12, 20, 33, 0.52) 100%);
   background-repeat: no-repeat;
 }
 
+/* Research imagery (hand placing a savings coin into asset blocks) as a
+   fixed, site-wide watermark in the lower-right of the viewport — visible on
+   every page and every section. It sits at z-index 0 with header/main/footer
+   raised above it, so it renders behind the copy without collapsing behind
+   the body background. */
+body::after {
+  content: "";
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: clamp(340px, 44vw, 720px);
+  aspect-ratio: 16 / 9;
+  background: url("bg.png") no-repeat right bottom / contain;
+  opacity: 0.7;
+  pointer-events: none;
+  /* Soft radial fade anchored to the corner so the whole illustration (hand +
+     coin + asset blocks) stays visible, feathering only at the far edges. */
+  -webkit-mask-image: radial-gradient(120% 120% at 100% 100%, #000 55%, transparent 96%);
+  mask-image: radial-gradient(120% 120% at 100% 100%, #000 55%, transparent 96%);
+}
+
+/* Keep the readable content above the watermark. */
+.site-header, main, .site-footer { position: relative; z-index: 1; }
+
 img { max-width: 100%; height: auto; }
+
+/* The `hidden` attribute must always win over component display rules
+   (e.g. .publist { display:flex }) so expandable sections stay collapsed. */
+[hidden] { display: none !important; }
 
 main { flex: 1 0 auto; width: 100%; }
 
@@ -105,7 +130,7 @@ a {
   text-decoration: none;
   transition: color 0.2s var(--ease);
 }
-a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--inst-yellow); text-decoration: underline; text-underline-offset: 3px; }
 
 ::selection { background: var(--accent); color: #fff; }
 
