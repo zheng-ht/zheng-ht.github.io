@@ -4,267 +4,290 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZHENG HAO-TIAN | 郑 皓天</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/site.css">
     <style>
-      .news-container {
-            position: relative;
-            overflow: hidden;
-            height: 300px; /* Adjust based on your design */
-        }
-        .news-item {
-            position: absolute;
-            width: 100%;
-            transition: opacity 0.5s, top 0.5s; /* Smooth transition */
-        }
-        .news-item.active {
-            opacity: 1;
-            transition: opacity 0.5s, top 0.5s;
-        }
-        .news-item.leaving {
-            opacity: 0;
-            top: -100%;
-        }
+      /* ===== index-specific ===== */
+      .hero {
+        min-height: 88vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem var(--gutter);
+      }
+      .hero__name {
+        font-size: clamp(2.6rem, 8vw, 6rem);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.4em;
+      }
+      .hero__name .accent { color: var(--accent-soft); }
+      .hero__lede {
+        font-family: var(--serif);
+        font-size: clamp(1.15rem, 3vw, 2rem);
+        line-height: 1.45;
+        color: var(--ink-soft);
+        width: min(880px, 92%);
+        margin: 0 auto 1.6rem;
+      }
+      .hero__lede b { color: var(--ink); }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #0c1421;
-      padding: 0.8vw 1vw;
-      color: white;
-    }
+      .scroll-cue {
+        width: 52px; height: 52px;
+        border-radius: 50%;
+        border: none;
+        background: var(--accent);
+        color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(200,51,43,0.4);
+        transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+      }
+      .scroll-cue:hover { transform: translateY(4px); background: var(--accent-deep); }
+      .scroll-cue .arrow-icon { font-size: 20px; }
 
-    h1 {
-      font-size: 110px;
-        color: white;
-      text-align: center;
-    }
+      section.panel { padding: 4rem var(--gutter); }
 
-    #intro {
-      text-align: center;
-      color: white;
-      font-size: 43px;
-    }
+      .two-col {
+        display: flex;
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        align-items: flex-start;
+        width: min(var(--wrap), 100%);
+        margin-inline: auto;
+      }
+      .two-col > .col { flex: 1; min-width: 0; }
 
-body {
-    background-image: url('assets/bg.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+      .about-photo {
+        display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      }
+      .about-photo img {
+        width: min(320px, 70%);
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid var(--line);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+      }
+      .pronounce {
+        font-size: 0.95rem;
+        color: var(--ink-soft);
+        text-align: center;
+      }
+      .audio-button {
+        margin-left: 0.4em;
+        padding: 0.35rem 0.8rem;
+        font-size: 0.85rem;
+        background: var(--accent);
+        color: #fff; border: none; border-radius: 999px; cursor: pointer;
+        transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+      }
+      .audio-button:hover { background: var(--accent-deep); transform: translateY(-1px); }
 
-  }
+      .bio {
+        font-size: clamp(1rem, 1.35vw, 1.15rem);
+        line-height: 1.7;
+        color: var(--ink-soft);
+        text-align: left;
+      }
+      .bio a { color: var(--accent-soft); font-weight: 600; }
 
-  footer {
-    color: white;
-    background: none;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
-  }
+      /* Activities ticker */
+      .news-container { position: relative; overflow: hidden; }
+      .news-item {
+        position: absolute;
+        width: 100%;
+        font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+        line-height: 1.55;
+        color: var(--ink-soft);
+        transition: opacity 0.5s var(--ease), top 0.5s var(--ease);
+      }
+      .news-item a { color: var(--accent-soft); font-weight: 600; }
+      .news-item.leaving { opacity: 0; top: -100%; }
 
-    p {
-      margin: 0;
-      line-height: 1.5; /* Adjust the line spacing value */
-    }
+      .working-list {
+        list-style: none;
+        margin: 0; padding: 0;
+        display: flex; flex-direction: column; gap: 0.9rem;
+      }
+      .working-list li {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1.1rem;
+        font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+        line-height: 1.5;
+        color: var(--ink);
+        text-align: left;
+      }
+      .working-list em { color: var(--ink-faint); font-style: normal; display: block; font-size: 0.9em; margin-top: 0.2em; }
+      .ongoing-note { margin-top: 1.2rem; font-size: 0.9rem; color: var(--ink-faint); }
+      .ongoing-note a { color: var(--accent-soft); }
 
-    a {
-      color: #990000; /* Change the color of the URLs */
-    }
+      .col-heading {
+        font-size: clamp(1.4rem, 2.6vw, 2rem);
+        color: var(--ink);
+        margin-bottom: 0.8em;
+      }
+      .col-heading::after {
+        content: ""; display: block; width: 48px; height: 3px;
+        background: var(--accent); border-radius: 2px; margin-top: 0.35em;
+      }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        section {
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            text-align: center;
-            background: url('assets/bg.png') no-repeat center center / cover;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #2980b9;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .arrow-icon {
-            font-size: 24px; /* Larger icon for visibility */
-        }
+      @media (max-width: 860px) {
+        .two-col { flex-direction: column; }
+        .about-photo { align-items: center; }
+      }
     </style>
 </head>
 
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 1vw; width: 100vw">
-  <h2 style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0;">
-      <a href="index.html" style="color: white;text-decoration: none;">ZHENG HAO-TIAN | 郑 皓天</a>
-  </h2>
-  <nav style="font-size: 1.85vw; padding: 0.5vw 1vw; position: fixed; top: 1vw; right: 1vw; width: auto;">
-      <ul style="display: flex; gap: 1vw; margin: 0; padding: 0; list-style-type: none;">
-        <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-          <a href="index.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">ABOUT</a>
-      </li>  
-      <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-        <a href="research.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">RESEARCH</a>
-    </li>
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-              <a href="teaching.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">TEACHING</a>
-          </li>
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-              <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
-          </li>
-
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-            <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
-        </li>
+<body>
+<header class="site-header">
+  <h2 class="brand"><a href="index.html">ZHENG HAO-TIAN <span class="zh">郑 皓天</span></a></h2>
+  <nav class="site-nav">
+      <ul>
+        <li><a href="index.html" aria-current="page">ABOUT</a></li>
+        <li><a href="research.html">RESEARCH</a></li>
+        <li><a href="teaching.html">TEACHING</a></li>
+        <li><a href="assets/ZHENG_CV.pdf" target="_blank">CV</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
       </ul>
   </nav>
 </header>
 
-<body>
-
-    <section id="landing">
-        <h1 style="font-size: 8vw; position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-bottom: 20px; margin-top: -50px;">HAOTIAN ZHENG </h1>
-        <p id="intro" style="font-size: 3vw;position: relative; top: -60px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; width: 77%; margin-top: 0;margin-bottom: -2vw;">... is an assistant professor at the School of Social Welfare, State University of New York at Stony Brook. He researches social policies aimed at improving <em><b>Financial and Social Well-being</b></em> through <em><b>Financial Capability</b></em> and <em><b>Asset-building</b></em>, focusing on low-income populations.
+<main>
+    <section class="hero" id="landing">
+        <h1 class="hero__name reveal">HAOTIAN <span class="accent">ZHENG</span></h1>
+        <p class="hero__lede reveal">... is an assistant professor at the School of Social Welfare, State University of New York at Stony Brook. He researches social policies aimed at improving <b>Financial and Social Well-being</b> through <b>Financial Capability</b> and <b>Asset-building</b>, focusing on low-income populations.
         </p>
-        <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
-        style="border-radius: 50%; background-color: #990000; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; transition: transform 0.2s ease;"
-        onmouseover="this.style.transform='translateY(-4px)';"
-        onmouseout="this.style.transform='translateY(0)';">
-        <i class="fas fa-angle-double-down arrow-icon" style="color: white; font-size: 19.2px;"></i>
-      </button>
+        <button class="scroll-cue reveal" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });" aria-label="Scroll to about">
+          <i class="fas fa-angle-double-down arrow-icon"></i>
+        </button>
     </section>
 
-    <section id="about">
-      <h1 style = "font-size: 4vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">ABOUT</h1>
-      <div style="display: table; width: 100%; clear: both;">
-        <div style="float: left; width: 50%;">
-          <img src="assets/top-portrait-Zheng,Haotian.jpg" alt="Hidden Image" style="width: 25vw; height: auto; border-radius: 50%/50%;">
-          <p id="pronounce" style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; text-align: center; width: 100%; margin-top: 0;">
-            Give it a shot to pronounce my first name: haʊ tjen <button class="audio-button" onclick="playAudio()" style="font-size: 1.3vw; background-color: #990000;">Click me</button>
-        </p>
-
-        <audio id="myAudio">
-          <source src="assets/Haotian_pronounce.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-
-        <script>
-          function playAudio() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-          }
-        </script>
-        </div>
-        <div style="float: left; width: 50%;">
-          <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
-            Hello! I'm social policy researcher and an assistant professor at the <font color="#990000"><a href="https://socialwelfare.stonybrookmedicine.edu/" target="_blank">School of Social Welfare</a></font color>, State University of New York Stony Brook. I study interventions and policies ranging from Children's Savings Account and Child Development Account to guaranteed income and Child Tax Credit. My work employs various quantitative methods, both experimental and observational, to understand whether and how policies are effective in improving financial and social well-being. 
+    <section class="panel" id="about">
+      <h1 class="section-title reveal">ABOUT</h1>
+      <div class="two-col">
+        <div class="col about-photo reveal">
+          <img src="assets/top-portrait-Zheng,Haotian.jpg" alt="Portrait of Haotian Zheng">
+          <p class="pronounce">
+            Give it a shot to pronounce my first name: haʊ tjen
+            <button class="audio-button" onclick="playAudio()">Click me</button>
           </p>
-          <br>
-          <p style="font-size: 1.35vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin-top: 0; width: 77%; text-align: justify;">
+          <audio id="myAudio">
+            <source src="assets/Haotian_pronounce.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="col reveal">
+          <p class="bio">
+            Hello! I'm social policy researcher and an assistant professor at the <a href="https://socialwelfare.stonybrookmedicine.edu/" target="_blank">School of Social Welfare</a>, State University of New York Stony Brook. I study interventions and policies ranging from Children's Savings Account and Child Development Account to guaranteed income and Child Tax Credit. My work employs various quantitative methods, both experimental and observational, to understand whether and how policies are effective in improving financial and social well-being.
+          </p>
+          <p class="bio">
             My research has appeared or is forthcoming in the Journal of Consumer Affairs, Journal of Family and Economic Issues, Journal of Social Policy, The Russell Sage Foundation Journal of the Social Sciences, and Journal of the Society for Social Work and Research. I  have been part of multi-year research grants funded by the Ford Foundation, JPMorgan Chase Foundation, MasterCard Foundation, and other major funders in the field.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="research">
-      <div style="display: table; width: 100%; clear: both;">
-        <div style="float: left; width: 37%">
-          <h1 style = "font-size: 4vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">ACTIVITIES</h1>
-          <!--<div style = "font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;"> <strong>[PINNED] I am delighted to be joining <font color="#990000">The State University of New York at Stony Brook</font> as an assistant professor in fall 2025. </strong></div>-->
+    <section class="panel" id="research">
+      <div class="two-col">
+        <div class="col reveal">
+          <h1 class="col-heading">ACTIVITIES</h1>
           <div class="news-container">
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2026-06] Delivered two invited presentations at the Annie E. Casey Foundation convening <em>From Autopsy to Architecture</em> (Baltimore, MD).</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-11] Historical harm and contemporary wealth disparities study is accepted to the <a href="https://link.springer.com/article/10.1007/s41996-025-00180-8" target="_blank">JERP</a>.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-11] Presented In Her Hands and financial well-being at 2025 APPAM Fall Conference.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-09] Financial shocks and emergency savings policy brief <a href="https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=1972&context=csd_research" target = "_blank">released</a>.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-04] Successfully defended my PhD dissertation.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2025-04] Co-authored BNPL and AFS study presented at 2025 ACCI Annual Conference.</div>
-            <!-- 
-            <div class="news-item" style = "margin-right:7vw; font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-07] COVID-19 job loss and early retirement withdrawal study is accepted to and published online by the <a href="https://doi.org/10.1111/joca.12598" target="_blank">JCA</a>; Featured by <a href="https://source.washu.edu/2024/09/covid-19-job-losses-impacted-early-withdrawal-from-retirement-accounts/?utm_source=newsletter&utm_medium=email&utm_content=COVID-19%20job%20losses%20impacted%20withdrawal%20from%20retirement%20funds&utm_campaign=Record%209-20-24" target="_blank">The Source</a>.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Black Reparations study is published and discussed by <a href="https://www.rsfjournal.org/content/10/3" target="_blank">The RSF JSS</a>; Featured by <a href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations" target="_blank">NPR</a>.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-06] Child Tax Credit expansion study is accepted to the <a href="https://www.journals.uchicago.edu/doi/10.1086/731836" target="_blank">JSSWR</a>.</div>
-            <div class="news-item" style = "margin-right:7vw;font-size: 1.8vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">[2024-01] Presented historical harm and wealth ownership study at 2024 SSWR.</div>
+            <div class="news-item">[2026-06] Delivered two invited presentations at the Annie E. Casey Foundation convening <em>From Autopsy to Architecture</em> (Baltimore, MD).</div>
+            <div class="news-item">[2025-11] Historical harm and contemporary wealth disparities study is accepted to the <a href="https://link.springer.com/article/10.1007/s41996-025-00180-8" target="_blank">JERP</a>.</div>
+            <div class="news-item">[2025-11] Presented In Her Hands and financial well-being at 2025 APPAM Fall Conference.</div>
+            <div class="news-item">[2025-09] Financial shocks and emergency savings policy brief <a href="https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=1972&context=csd_research" target="_blank">released</a>.</div>
+            <div class="news-item">[2025-04] Successfully defended my PhD dissertation.</div>
+            <div class="news-item">[2025-04] Co-authored BNPL and AFS study presented at 2025 ACCI Annual Conference.</div>
+            <!--
+            <div class="news-item">[2024-07] COVID-19 job loss and early retirement withdrawal study is accepted to and published online by the <a href="https://doi.org/10.1111/joca.12598" target="_blank">JCA</a>; Featured by <a href="https://source.washu.edu/2024/09/covid-19-job-losses-impacted-early-withdrawal-from-retirement-accounts/?utm_source=newsletter&utm_medium=email&utm_content=COVID-19%20job%20losses%20impacted%20withdrawal%20from%20retirement%20funds&utm_campaign=Record%209-20-24" target="_blank">The Source</a>.</div>
+            <div class="news-item">[2024-06] Black Reparations study is published and discussed by <a href="https://www.rsfjournal.org/content/10/3" target="_blank">The RSF JSS</a>; Featured by <a href="https://www.stlpr.org/race-identity-and-faith/2024-07-08/washington-university-researchers-child-savings-reparations" target="_blank">NPR</a>.</div>
+            <div class="news-item">[2024-06] Child Tax Credit expansion study is accepted to the <a href="https://www.journals.uchicago.edu/doi/10.1086/731836" target="_blank">JSSWR</a>.</div>
+            <div class="news-item">[2024-01] Presented historical harm and wealth ownership study at 2024 SSWR.</div>
             -->
-            <!-- Add more news items as needed -->
         </div>
         </div>
-        <script>
-          const newsItems = Array.from(document.querySelectorAll('.news-item'));
-          const itemsToShow = 3;
-          let currentIndex = 0;
 
-          function updateNewsDisplay() {
-              newsItems.forEach((item, index) => {
-                  item.classList.remove('active', 'leaving');
-                  item.style.top = '';
-              });
-
-              let totalHeight = 0;
-              for (let i = 0; i < itemsToShow; i++) {
-                  const index = (currentIndex + i) % newsItems.length;
-                  const item = newsItems[index];
-                  item.classList.add('active');
-                  item.style.top = `${totalHeight}px`;
-                  totalHeight += item.getBoundingClientRect().height;
-              }
-
-              // Set the height of the container to the total height of the visible items
-              document.querySelector('.news-container').style.height = `${totalHeight}px`;
-
-              // Ensure that all items are properly hidden or displayed
-              newsItems.forEach((item, index) => {
-                  const isVisible = (index >= currentIndex && index < currentIndex + itemsToShow) || (index < currentIndex && index + newsItems.length < currentIndex + itemsToShow);
-                  if (isVisible) {
-                      item.classList.remove('leaving');
-                  } else {
-                      item.classList.add('leaving');
-                  }
-              });
-          }
-
-          updateNewsDisplay();
-          setInterval(() => {
-              currentIndex = (currentIndex + 1) % newsItems.length;
-              updateNewsDisplay();
-          }, 5000);
-      </script>
-
-        <div style="float: left; width: 63%">
-          <h1 style = "font-size: 4vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;margin-top: 0; width: 77%;">WORKING STUDIES</h1>
-          <ul style = "font-size: 1.8vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
-            <li>Employment Characteristics, Emergency Savings, and Financial Shocks <em>(with S. Roll and M. Despard)</em></li>
-            <li>Guaranteed Income and High Cost Financial Services Use <em>(with S. Roll, L. Hamilton, G. Zhang, & L. Brugger)</em></li>
-            <li>Historical Racial Harm and Well-being <em>(with J. Huang and M. Sherraden)</em></li>
-            <li>Income Volatility and Well-being <em>(with S. Conroy, S. Roll and M. Despard)</em></li>
+        <div class="col reveal">
+          <h1 class="col-heading">WORKING STUDIES</h1>
+          <ul class="working-list">
+            <li>Employment Characteristics, Emergency Savings, and Financial Shocks <em>with S. Roll and M. Despard</em></li>
+            <li>Guaranteed Income and High Cost Financial Services Use <em>with S. Roll, L. Hamilton, G. Zhang, &amp; L. Brugger</em></li>
+            <li>Historical Racial Harm and Well-being <em>with J. Huang and M. Sherraden</em></li>
+            <li>Income Volatility and Well-being <em>with S. Conroy, S. Roll and M. Despard</em></li>
           </ul>
-
-        <p class="ongoing-research" style = "position: relative; left: 2.5vw;width:90%;font-size: 1vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;text-align: left;">
-      I present here research projects that I am currently working on. Completed projects, manuscripts under consideration, technical reports, and presentations can be found in the <a href="research.html">Research</a> page and my <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a>.
-         </p>    
+          <p class="ongoing-note">
+            I present here research projects that I am currently working on. Completed projects, manuscripts under consideration, technical reports, and presentations can be found in the <a href="research.html">Research</a> page and my <a href="assets/ZHENG_CV.pdf" target="_blank">CV</a>.
+          </p>
         </div>
       </div>
-      </section>
+    </section>
+</main>
 
-<footer style="font-size: 1.05vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+<footer class="site-footer">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+
+<script>
+  function playAudio() {
+    var audio = document.getElementById("myAudio");
+    audio.play();
+  }
+
+  // News ticker
+  const newsItems = Array.from(document.querySelectorAll('.news-item'));
+  const itemsToShow = 3;
+  let currentIndex = 0;
+
+  function updateNewsDisplay() {
+      newsItems.forEach((item) => {
+          item.classList.remove('active', 'leaving');
+          item.style.top = '';
+      });
+
+      let totalHeight = 0;
+      for (let i = 0; i < itemsToShow; i++) {
+          const index = (currentIndex + i) % newsItems.length;
+          const item = newsItems[index];
+          item.classList.add('active');
+          item.style.top = `${totalHeight}px`;
+          totalHeight += item.getBoundingClientRect().height;
+      }
+      document.querySelector('.news-container').style.height = `${totalHeight}px`;
+
+      newsItems.forEach((item, index) => {
+          const isVisible = (index >= currentIndex && index < currentIndex + itemsToShow) || (index < currentIndex && index + newsItems.length < currentIndex + itemsToShow);
+          if (!isVisible) item.classList.add('leaving');
+      });
+  }
+  if (newsItems.length) {
+    updateNewsDisplay();
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % newsItems.length;
+        updateNewsDisplay();
+    }, 5000);
+  }
+
+  // Reveal on scroll
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
 </body>
 </html>

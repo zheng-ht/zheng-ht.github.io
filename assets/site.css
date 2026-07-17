@@ -1,0 +1,262 @@
+/* ============================================================
+   ZHENG HAO-TIAN — shared site stylesheet
+   Single source of truth for all four pages.
+   Identity: dark navy #0c1421 + crimson accent + serif/sans pairing.
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Palette */
+  --navy:        #0c1421;
+  --navy-2:      #12203a;   /* card surface */
+  --navy-3:      #16273f;   /* hover surface */
+  --ink:         #eef2fb;   /* primary text */
+  --ink-soft:    #c4cee4;   /* secondary text */
+  --ink-faint:   #93a1c0;   /* tertiary / captions */
+  --line:        rgba(255, 255, 255, 0.10);
+  --accent:      #c8332b;   /* single crimson (replaces #990000/#a51417) */
+  --accent-deep: #9c1f1a;
+  --accent-soft: #ff8a80;   /* links on dark */
+  --gold:        #e7c169;   /* link highlight on cards */
+
+  /* Type */
+  --serif: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
+  --sans:  "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+           Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Rhythm */
+  --wrap: 1120px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 14px;
+  --radius-sm: 9px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.45s;
+}
+
+/* ---------- Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* Solid base so long pages / overscroll never show the UA background */
+  background-color: var(--navy);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sans);
+  color: var(--ink);
+  /* Rich navy gradient base covering the WHOLE document (not just viewport),
+     so content pages never fall off the photo onto a bare background. */
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(1200px 600px at 70% -5%, rgba(200,51,43,0.10), transparent 60%),
+    linear-gradient(180deg, #0d1626 0%, #0c1421 30%, #0a111c 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+/* Fixed photographic backdrop + dark veil, painted behind everything.
+   Sits above the navy gradient (z-index -1 vs body's own background) but
+   behind content, so the photo shows through on hero/first screen while the
+   gradient guarantees deep navy on long scrolls. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg, rgba(12,20,33,0.60) 0%, rgba(12,20,33,0.80) 100%),
+    url("bg.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+img { max-width: 100%; height: auto; }
+
+main { flex: 1 0 auto; width: 100%; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+a:hover { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+::selection { background: var(--accent); color: #fff; }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.9rem var(--gutter);
+  background: rgba(12, 20, 33, 0.82);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.brand a { color: inherit; }
+.brand a:hover { color: var(--ink); text-decoration: none; }
+.brand .zh { color: var(--accent-soft); font-weight: 500; margin-left: 0.4em; }
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-nav a {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.site-nav a:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+.site-nav a[aria-current="page"] {
+  color: #fff;
+  background: rgba(200, 51, 43, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(200, 51, 43, 0.5);
+}
+
+/* ---------- Shared layout helpers ---------- */
+.wrap {
+  width: min(var(--wrap), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  color: var(--ink);
+  text-align: center;
+  margin-bottom: 0.75em;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0.5em auto 0;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Card used across research / teaching / contact / about panels */
+.card {
+  background: rgba(16, 28, 50, 0.88);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.1rem, 2.4vw, 1.9rem);
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), background 0.2s var(--ease),
+              box-shadow 0.2s var(--ease);
+  box-shadow: 0 4px 14px rgba(200, 51, 43, 0.35);
+}
+.btn:hover { background: var(--accent-deep); transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  color: var(--ink);
+}
+.btn--ghost:hover { background: rgba(255, 255, 255, 0.16); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: auto;
+  padding: 1.4rem var(--gutter);
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  border-top: 1px solid var(--line);
+  background: rgba(12, 20, 33, 0.5);
+}
+
+/* ---------- Reveal on scroll (subtle) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .site-header { justify-content: center; }
+  .brand { width: 100%; text-align: center; }
+  .site-nav ul { justify-content: center; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

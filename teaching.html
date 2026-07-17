@@ -1,159 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZHENG HAOTIAN | TEACHING</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    /* Optional: Add some CSS styling to your navbar */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #0c1421;
-      padding: 0.8vw 1vw;
-      color: white;
+    /* ===== teaching-specific ===== */
+    .teaching-wrap {
+      width: min(920px, 100% - 2 * var(--gutter));
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+    .block { margin-bottom: 2.5rem; }
+    .block h2 {
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      color: var(--ink);
+      margin-bottom: 0.9em;
+    }
+    .block h2::after {
+      content: ""; display: block; width: 48px; height: 3px;
+      background: var(--accent); border-radius: 2px; margin-top: 0.35em;
     }
 
-    h1 {
-      font-size: 110px;
-        color: white;
-      text-align: center;
+    .course-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .course-list li {
+      background: rgba(16, 28, 50, 0.85);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem 1.2rem;
+      font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+      color: var(--ink);
+      line-height: 1.5;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      transition: background 0.2s var(--ease), transform 0.15s var(--ease);
     }
+    .course-list li:hover { background: var(--navy-3); transform: translateX(3px); }
+    .course-list .role { color: var(--accent-soft); font-weight: 600; }
 
-    .std-feedback {
-      font-size: 20px;
-      color: white;
-      margin-right: 20px; /* Adjust the margin value as needed */
-      margin-left: 6ex; /* Adjust the indentation value as needed */
+    .feedback-card {
+      background: rgba(16, 28, 50, 0.85);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem 1.3rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
-
-    body {
-    background-image: url('assets/bg.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    position: relative; /* required for layering */
-  }
-
-  body::before {
-  content: "";
-  position: fixed;  /* stays put like background */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit; /* copy body background */
-  background-image: url('assets/bg.png');
-  background-size: cover;
-  background-position: center;
-  filter: blur(7px);   /* adjust blur radius */
-  z-index: -1;         /* push it behind content */
-}
-
-  footer {
-    color: white;
-    background: none;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
-  }
-    a {
-      color: #a51417; /* Change the color of the URLs */
+    .feedback-card em {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 0.6rem;
     }
-
-  .course-list-container {
-    margin-bottom: 3rem;
-  }
-
-  .course-list-container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #444;
-    padding-bottom: 0.5rem;
-  }
-
-  .course-list li {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    background: gray;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    list-style: none;
-  }
-
-  .std-feedback {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: gray;
-    border-left: 4px solid #990000;
-    border-radius: 4px;
-    line-height: 1.5;
-  }
-
-  .std-feedback em {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #ddd;
-  }
-</style>
+    .feedback-card .attrib { color: var(--ink-faint); font-size: 0.88rem; letter-spacing: 0.02em; }
+  </style>
 </head>
 
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 1vw; width: 100vw">
-  <h2 style="font-size: 1.85vw; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0;">
-    <a href="index.html" style="color: white;text-decoration: none;">ZHENG HAO-TIAN | 郑 皓天</a>
-  </h2>
-  <nav style="font-size: 1.85vw; padding: 0.5vw 1vw; position: fixed; top: 1vw; right: 1vw; width: auto;">
-      <ul style="display: flex; gap: 1vw; margin: 0; padding: 0; list-style-type: none;">
-        <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-          <a href="index.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">ABOUT</a>
-      </li>  
-      <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-        <a href="research.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">RESEARCH</a>
-    </li>
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-              <a href="teaching.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">TEACHING</a>
-          </li>
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-              <a href="assets/ZHENG_CV.pdf" target="_blank" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CV</a>
-          </li>
-
-          <li style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-            <a href="contact.html" style="text-decoration: none; color: white; padding: 0.5vw 1vw;" onmouseover="this.style.background='#a51417'" onmouseout="this.style.background='transparent'">CONTACT</a>
-        </li>
+<body>
+<header class="site-header">
+  <h2 class="brand"><a href="index.html">ZHENG HAO-TIAN <span class="zh">郑 皓天</span></a></h2>
+  <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">ABOUT</a></li>
+        <li><a href="research.html">RESEARCH</a></li>
+        <li><a href="teaching.html" aria-current="page">TEACHING</a></li>
+        <li><a href="assets/ZHENG_CV.pdf" target="_blank">CV</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
       </ul>
   </nav>
 </header>
 
-<div class="course-list-container">
-  <h2 style="padding-left: 2rem;color:white;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Courses Taught</h2>
-  <div class="course-list">
-      <ul>
-        <li style="color:white; font-size:1.4vw;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">SUNY-SB HWC-510 Social Policy and Social Determinants (Role: Instructor)</li>
-        <li style="color:white; font-size:1.4vw;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">SUNY-SB HWC-509 Foundations of Social Justice: Challenging Oppression (Role: Instructor)</li>
-        <li style="color:white; font-size:1.4vw;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">WashU S55-5230 Applied Linear Modeling (Role: Teaching Assistant)</li>
-        <li style="color:white; font-size: 1.4vw;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">WashU S15-5007 Research Methods with Statistical Applications (Role: Teaching Assistant)</li>
-        <li style="color:white; font-size: 1.4vw;margin-bottom: 10px;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">WashU S40-5842 Social Policy & Evaluation (Role: Teaching Assistant)</li>
+<main>
+  <div class="teaching-wrap">
+    <div class="block reveal">
+      <h2>Courses Taught</h2>
+      <ul class="course-list">
+        <li>SUNY-SB HWC-510 Social Policy and Social Determinants <span class="role">(Role: Instructor)</span></li>
+        <li>SUNY-SB HWC-509 Foundations of Social Justice: Challenging Oppression <span class="role">(Role: Instructor)</span></li>
+        <li>WashU S55-5230 Applied Linear Modeling <span class="role">(Role: Teaching Assistant)</span></li>
+        <li>WashU S15-5007 Research Methods with Statistical Applications <span class="role">(Role: Teaching Assistant)</span></li>
+        <li>WashU S40-5842 Social Policy &amp; Evaluation <span class="role">(Role: Teaching Assistant)</span></li>
       </ul>
-  </div>
-</div>
+    </div>
 
-<div class="course-list-container">
-  <h2 style="padding-left: 2rem;color:white;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Student Feedback</h2>
-  <div class="course-list">
-    <p class="std-feedback" style="text-align:left;font-size: 1.3vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><em>"Haotian contributed greatly to my learning and was very patient. He's probably the best TA I've had in any class for how present he was and how much he helped."</em>-- Anonymous Student 1</p>
-    <p class="std-feedback" style="text-align:left;font-size: 1.3vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><em>"He was one of the most involved TA's I have had. He contributed more to this course than I would have expected for a TA. It was incredibly helpful to us as students but I think a lot of work was given to him."</em>-- Anonymous Student 2</p>
-    <p class="std-feedback" style="text-align:left;font-size: 1.3vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><em>"soooo helpful when we were lost! he was so great at going above and beyond to help us out."</em>-- Anonymous Student 3</p>  
+    <div class="block reveal">
+      <h2>Student Feedback</h2>
+      <div class="feedback-card">
+        <em>"Haotian contributed greatly to my learning and was very patient. He's probably the best TA I've had in any class for how present he was and how much he helped."</em>
+        <span class="attrib">— Anonymous Student 1</span>
+      </div>
+      <div class="feedback-card">
+        <em>"He was one of the most involved TA's I have had. He contributed more to this course than I would have expected for a TA. It was incredibly helpful to us as students but I think a lot of work was given to him."</em>
+        <span class="attrib">— Anonymous Student 2</span>
+      </div>
+      <div class="feedback-card">
+        <em>"soooo helpful when we were lost! he was so great at going above and beyond to help us out."</em>
+        <span class="attrib">— Anonymous Student 3</span>
+      </div>
+    </div>
   </div>
-</div>
+</main>
 
-<footer style="font-size: 1.05vw;font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+<footer class="site-footer">&copy; Haotian Zheng Academic Page <script>document.write(new Date().getFullYear());</script> | Social Welfare@SUNY Stony Brook</footer>
+
+<script>
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-visible')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
 </body>
 </html>
