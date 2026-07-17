@@ -14,10 +14,13 @@
   --ink-soft:    #c4cee4;   /* secondary text */
   --ink-faint:   #93a1c0;   /* tertiary / captions */
   --line:        rgba(255, 255, 255, 0.10);
-  --accent:      #c8332b;   /* single crimson (replaces #990000/#a51417) */
-  --accent-deep: #9c1f1a;
-  --accent-soft: #ff8a80;   /* links on dark */
-  --gold:        #e7c169;   /* link highlight on cards */
+
+  /* Institutional (Stony Brook) colors */
+  --accent:      #990000;   /* official institutional red RGB 153/0/0 */
+  --accent-deep: #6e0000;   /* hover / pressed */
+  --accent-soft: #ff6b5e;   /* legible on dark navy for text links */
+  --inst-yellow: #f1ea86;   /* official institutional yellow RGB 241/234/134 */
+  --gold:        #e7c169;   /* legacy generic highlight (unused for DOI/Feature) */
 
   /* Type */
   --serif: "Source Serif 4", "Charter", Georgia, "Times New Roman", serif;
@@ -52,32 +55,34 @@ body {
   flex-direction: column;
   font-family: var(--sans);
   color: var(--ink);
-  /* Rich navy gradient base covering the WHOLE document (not just viewport),
-     so content pages never fall off the photo onto a bare background. */
+  /* Solid navy base only — the photographic backdrop (body::before) carries the
+     visual identity, so no competing gradient here. */
   background-color: var(--navy);
-  background-image:
-    radial-gradient(1200px 600px at 70% -5%, rgba(200,51,43,0.10), transparent 60%),
-    linear-gradient(180deg, #0d1626 0%, #0c1421 30%, #0a111c 100%);
-  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
 }
 
-/* Fixed photographic backdrop + dark veil, painted behind everything.
-   Sits above the navy gradient (z-index -1 vs body's own background) but
-   behind content, so the photo shows through on hero/first screen while the
-   gradient guarantees deep navy on long scrolls. */
+/* Photographic backdrop (research imagery: hand placing a savings coin into
+   asset blocks) painted full-bleed behind all content. `cover` fills the
+   viewport; `center 28%` keeps the hand-and-coins graphic in frame on tall
+   screens. A gentle vertical veil — darker only behind the header/footer —
+   keeps text legible while letting the illustration show through clearly. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
+  background-color: var(--navy);
   background-image:
-    linear-gradient(180deg, rgba(12,20,33,0.60) 0%, rgba(12,20,33,0.80) 100%),
+    linear-gradient(180deg,
+      rgba(12, 20, 33, 0.40) 0%,
+      rgba(12, 20, 33, 0.16) 30%,
+      rgba(12, 20, 33, 0.20) 62%,
+      rgba(12, 20, 33, 0.44) 100%),
     url("bg.png");
   background-size: cover;
-  background-position: center center;
+  background-position: center 20%;
   background-repeat: no-repeat;
 }
 
